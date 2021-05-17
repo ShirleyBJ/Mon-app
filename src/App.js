@@ -169,10 +169,26 @@ class Fruits2 extends React.Component{
     return(
       <div>
         <p>Je suis un fruit de type {this.state.fruits[1].type} et je pése {this.state.fruits[1].poids} grammes.</p>
+        <p>Je suis un fruit de type {this.state.fruits[0].type} et je pése {this.state.fruits[0].poids} grammes.</p>
         <p>Je suis un légume appelé {this.state.legume}.</p>
         <button onClick={this.changeFruits}>Click to change</button>
       </div>
     )
+  }
+//**Fonction dans le composant */
+  changeFruits = () => {
+    this.setState({
+      fruits:[
+        {
+          type:"poire",
+          poids:"90"
+        },
+        {
+          type:"cerise",
+          poids:"11"
+        }
+      ]
+    })
   }
 }
 
