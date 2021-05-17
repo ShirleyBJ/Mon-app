@@ -7,15 +7,19 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Fruit1/>
+        <Fruit1 />
+        <Fruitprop type="kiwi" poids="100"/>
+        <Fruitprop2 type="tomate" poids="50"/>
+        <Fruitprop2 type="jujube" poids="1.5"> et je déchire comme fruit !</Fruitprop2>
         <Fruitbis/> 
         <Fruit2/>
         <Content/> 
         <Fruit3/>  
-        <Fruit4/> 
+        <Fruit4 /> 
         <HelloFruit/>
-        <Element/> 
-        < Exercice02/>
+        <FormatName nom="BERCHEL" prenom="Shirley"/>
+        <Exercice02/>
+        <Fruits2/>
       </header>
     </div>
   );
@@ -44,6 +48,18 @@ const Fruit1 = () => {
       <h1>Mon projet</h1>
       <p>Je suis {(name) ? name : 'un fruit inconnu'}</p>
     </div>
+  )
+}
+
+function Fruitprop(props){
+  return(
+    <div> Je suis {props.type} et de poids {props.poids}</div>
+  )
+}
+
+const Fruitprop2 = ({type,poids,children}) =>{
+  return(
+    <div> Je suis {type}, de poids {poids} {children}</div>
   )
 }
 
@@ -92,24 +108,35 @@ const HelloFruit = function() {
   )
 }
 
-function FormatName(){
+function FormatName(props){
   const user = {
-    nom : 'BERCHEL',
-    prenom : 'Shirley'
+    nom : props.nom,
+    prenom : props.prenom
   }
   return(
       // <p>Mon nom est {user.nom} et mon prénom est {user.prenom}</p>
-      <p>{user.nom} {user.prenom}</p>
+      <h1>{user.nom} {user.prenom}</h1>
   )
 }
 
-function Element(){
-  return(
-    <h1>
-      <FormatName/>
-    </h1>
-  )
-}
+// function FormatName(){
+//   const user = {
+//     nom : 'BERCHEL',
+//     prenom : 'Shirley'
+//   }
+//   return(
+//       // <p>Mon nom est {user.nom} et mon prénom est {user.prenom}</p>
+//       <p>{user.nom} {user.prenom}</p>
+//   )
+// }
+
+// function Element(){
+//   return(
+//     <h1>
+//       <FormatName/>
+//     </h1>
+//   )
+// }
 
 function Exercice02(){
   const fruits = ['Pomme','Pêche','Poire','Abricot']
@@ -118,6 +145,35 @@ function Exercice02(){
       {fruits.map( nom => <li>{nom}</li>)}
     </ul>
   )
+}
+
+class Fruits2 extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      fruits:[
+        {
+          type:"pomme",
+          poids:"100"
+        },
+        {
+          type:"fraise",
+          poids:"10"
+        },
+      ],
+      legume:"courgette"
+    }
+  }
+  render(){
+    console.log(this.state)
+    return(
+      <div>
+        <p>Je suis un fruit de type {this.state.fruits[1].type} et je pése {this.state.fruits[1].poids} grammes.</p>
+        <p>Je suis un légume appelé {this.state.legume}.</p>
+        <button onClick={this.changeFruits}>Click to change</button>
+      </div>
+    )
+  }
 }
 
 export default App;
