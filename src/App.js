@@ -228,8 +228,7 @@ class Counter extends React.Component{
     this.state = {
       count : 0
     }
-    //Notat
-    ion avec Bind
+    //Notation avec Bind
     this.handleSomething = this.handleSomething.bind(this);
   };
   render(){
