@@ -21,6 +21,7 @@ function App() {
         <Exercice02/>
         <Fruits2/>
         <User name="John Doe" age="50"/>
+        <Counter/>
       </header>
     </div>
   );
@@ -126,7 +127,7 @@ function FormatName(props){
 //     prenom : 'Shirley'
 //   }
 //   return(
-//       // <p>Mon nom est {user.nom} et mon prénom est {user.prenom}</p>
+//      // <p>Mon nom est {user.nom} et mon prénom est {user.prenom}</p>
 //       <p>{user.nom} {user.prenom}</p>
 //   )
 // }
@@ -213,10 +214,45 @@ class User extends React.Component{
   }
 
   changeUser = () => {
-    this.setState({
+    this.setState ({
       name : this.props.name,
       age : this.props.age
     })
+  }
+}
+
+//Exercice 02 - Compteur
+class Counter extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      count : 0
+    }
+    //Notat
+    ion avec Bind
+    this.handleSomething = this.handleSomething.bind(this);
+  };
+  render(){
+    console.log(this.state)
+    return(
+      <div>
+        <p>{this.state.count}</p>
+        <button onClick = {this.handleSomething}> Reset </button>
+      </div>
+    )
+  };
+
+  handleSomething() {
+    //*Fonction fléché doit tjrs avoir un return
+    this.setState ((state) => {
+      return{
+        count : state.count + 1
+      }
+    })
+    //Fonction de base
+    // this.setState ({
+    //     count : this.state.count + 1
+    // })
   }
 }
 
