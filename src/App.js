@@ -20,6 +20,7 @@ function App() {
         <FormatName nom="BERCHEL" prenom="Shirley"/>
         <Exercice02/>
         <Fruits2/>
+        <User name="John Doe" age="50"/>
       </header>
     </div>
   );
@@ -188,6 +189,33 @@ class Fruits2 extends React.Component{
           poids:"11"
         }
       ]
+    })
+  }
+}
+
+class User extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      name :"Jane Doe",
+      age :"30"
+    }
+  }
+  render(){
+    return(
+      <div>
+        <p>Cliente : {this.state.name}</p>
+        <p>Age : {this.state.age}</p>
+        <button onClick={this.changeUser}>Change user</button>
+      </div>
+      
+    )
+  }
+
+  changeUser = () => {
+    this.setState({
+      name : this.props.name,
+      age : this.props.age
     })
   }
 }
