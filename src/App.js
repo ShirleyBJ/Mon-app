@@ -3,6 +3,7 @@ import './App.css';
 import React, {Component} from 'react';
 
 function App() {
+  const numbers = [1,2,3,4,5]
   return (
     <div className="App">
       <header className="App-header">
@@ -22,6 +23,7 @@ function App() {
         <Fruits2/>
         <User name="John Doe" age="50"/>
         <Counter/>
+        <NbList tab = {numbers}/>
       </header>
     </div>
   );
@@ -75,7 +77,7 @@ function Fruitbis(){
 function Fruit3(){
   const fruits = ['une carambole','une pomme malaka','un corrosol']
   return(
-    <div> Je suis {fruits.map( nom => <p>{nom}</p>)}</div>
+    <div> Je suis {fruits.map( nom => <p key = {nom.toString()}>{nom}</p>)}</div>
   )
 }
 
@@ -144,11 +146,10 @@ function Exercice02(){
   const fruits = ['Pomme','Pêche','Poire','Abricot']
   return(
     <ul>
-      {fruits.map( nom => <li>{nom}</li>)}
+      {fruits.map( nom => <li key = {nom.toString()}>{nom}</li>)}
     </ul>
   )
 }
-
 class Fruits2 extends React.Component{
   constructor(props){
     super(props);
@@ -253,6 +254,14 @@ class Counter extends React.Component{
     //     count : this.state.count + 1
     // })
   }
+}
+
+function NbList({tab}){
+  return(
+    <ul>
+      {tab.map(number => <li key = {number.toString()}>{number}</li>)}
+    </ul>
+  )
 }
 
 export default App;
